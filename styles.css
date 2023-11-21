@@ -1,0 +1,81 @@
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+section {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body,
+.bg {
+    background-image: url("imagens/Growth\ curve-cuate.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p {
+    color: black;
+    margin-left: 100px;
+    border-radius: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 200px;
+}
+
+#btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(580%, -350%);
+}
+
+#topo h1 {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+button {
+    background-color: #444;
+    border-radius: 40px 20px 30px 10px;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #27ae60;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Alteração sutil na sombra ao passar o mouse */
+}
+
+input[type=number] {
+    border-radius: 80px;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+footer,
+a {
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

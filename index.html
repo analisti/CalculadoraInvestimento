@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de Investimento</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <section>
+
+        <div class="bg"></div>
+
+        <div id="topo">
+            <h1>Calculadora de Investimento</h1>
+        </div>
+
+        <div class="container">
+            <label for="valorInvestido">Valor Investido:</label><br>
+            <input type="number" id="valorInvestido" placeholder="Digite o valor que você vai investir:"
+                onkeydown="handleKeyPress(event)"><br><br>
+
+            <label for="porcentagemGanho">Porcentagem de Ganho:</label><br>
+            <input type="number" id="porcentagemGanho" placeholder="Digite a porcentagem desejada para ganho:"
+                onkeydown="handleKeyPress(event)"><br><br>
+
+            <label for="porcentagemPerda">Porcentagem de Perda:</label><br>
+            <input type="number" id="porcentagemPerda" placeholder="Digite a porcentagem desejada para perda:"
+                onkeydown="handleKeyPress(event)"><br><br>
+        </div>
+
+        <div id="btn"><button onclick="calcularInvestimento()">Calcular</button></div>
+
+        <p id="resumo">*Obs: o cálculo é baseado nas porcentagens de ganho e perda inseridas* Resumo do Investimento:
+        </p>
+
+        <script src="script.js"></script>
+
+    </section>
+
+    <footer>
+        <p class="copyright"><a href="https://github.com/analisti">Todos os direitos © 2023</a></p>
+    </footer>
+</body>
+
+</html>
