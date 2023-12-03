@@ -1,46 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Investimento</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-    <section>
+    <header>
+        <h1>Calculadora de Investimento</h1>
+        <marquee behavior="scroll" direction="left">
+            <p id="cotacaoDolar"></p>
+        </marquee>
 
-        <div class="bg"></div>
 
-        <div id="topo">
-            <h1>Calculadora de Investimento</h1>
-        </div>
+    </header>
 
-        <div class="container">
-            <label for="valorInvestido">Valor Investido:</label><br>
-            <input type="number" id="valorInvestido" placeholder="Digite o valor que você vai investir:"
-                onkeydown="handleKeyPress(event)"><br><br>
+    <main>
 
-            <label for="porcentagemGanho">Porcentagem de Ganho:</label><br>
-            <input type="number" id="porcentagemGanho" placeholder="Digite a porcentagem desejada para ganho:"
-                onkeydown="handleKeyPress(event)"><br><br>
+        <section id="calculator">
+            <div class="container">
+                <label for="valorInvestido">Digite o valor que você vai investir:</label><br>
+                <input type="number" id="valorInvestido" placeholder="Apenas números"><br><br>
 
-            <label for="porcentagemPerda">Porcentagem de Perda:</label><br>
-            <input type="number" id="porcentagemPerda" placeholder="Digite a porcentagem desejada para perda:"
-                onkeydown="handleKeyPress(event)"><br><br>
-        </div>
+                <label for="porcentagemGanho">Digite a porcentagem desejada para ganho:</label><br>
+                <input type="number" id="porcentagemGanho" placeholder="Apenas números"><br><br>
 
-        <div id="btn"><button onclick="calcularInvestimento()">Calcular</button></div>
+                <label for="porcentagemPerda">Digite a porcentagem que está disposto á perder:</label><br>
+                <input type="number" id="porcentagemPerda" placeholder="Apenas números"><br><br>
 
-        <p id="resumo">*Obs: o cálculo é baseado nas porcentagens de ganho e perda inseridas* Resumo do Investimento:
-        </p>
+                <button id="btn" onclick="calcularInvestimento()">Calcular</button>
+            </div>
+            <i>*Obs: o cálculo é baseado nas porcentagens de ganho e perda inseridas.*</i>
+        </section>
 
-        <script src="script.js"></script>
 
-    </section>
+
+        <section id="results">
+            <p id="resumo">
+                "Gestão de risco é a âncora que protege seu investimento, exigindo uma abordagem proativa,
+                diversificação inteligente e constante vigilância para enfrentar os desafios do mercado com confiança e
+                resiliência."
+            </p>
+        </section>
+    </main>
 
     <footer>
-        <p class="copyright"><a href="https://github.com/analisti">Todos os direitos © 2023</a></p>
+        <p class="copyright"><a href="https://instabio.cc/ciclododinheiro" target="_blank"
+                rel="noopener noreferrer">analist.com@outlook.com © 2023</a></p>
     </footer>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
