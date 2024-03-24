@@ -1,116 +1,228 @@
 /* Reset some default styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    margin-bottom: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 main {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-i{
-    display: flex;
-    justify-content: center;
-    color: #444;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
+i {
+  display: flex;
+  justify-content: center;
+  color: #444;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.02);
 }
 
 .container label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .container input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: border 0.3s ease;
+}
+
+.container input[type="number"]:focus {
+  border: 1px solid #333;
 }
 
 .container button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .container button:hover {
-    background-color: #444;
+  background-color: #444;
+  transform: scale(1.02);
+}
+
+#calculator,
+#exp {
+  flex: 1;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  padding: 0.8rem;
+  margin: 1rem auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #444;
+  transform: scale(1.02);
 }
 
 #results {
-    text-align: center;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#results:hover {
+  transform: scale(1.02);
+}
+
+#faq {
+  margin-top: 2rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+}
+
+.faq-item h3 {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.faq-item h3::after {
+  content: "▼";
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.expanded h3::after {
+  content: "▲";
+  transform: rotate(180deg);
+}
+
+.faq-item .answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.faq-item.expanded .answer {
+  max-height: 200px;
+  opacity: 1;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
 
 footer a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
-    text-decoration: underline;
+  color: #ddd;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 600px) {
-    body {
-        font-size: 18px;
-    }
+  body {
+    font-size: 20px;
+  }
 
-    header {
-        padding: 20px 0;
-    }
+  header {
+    padding: 2rem 0;
+  }
 
-    main {
-        width: 98%;
-    }
+  main {
+    width: 98%;
+  }
 
-    .container {
-        padding: 10px;
-    }
+  .container {
+    padding: 1rem;
+  }
 
-    footer {
-        padding: 20px 0;
-    }
+  footer {
+    padding: 2rem 0;
+  }
 }
