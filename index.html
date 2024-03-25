@@ -1,166 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Investimento</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="icon" href="imagens/calc.svg" type="image/x-icon" />
-  </head>
-  <body>
-    <header>
-      <h1>Calculadora de Investimento</h1>
-      <marquee behavior="scroll" direction="left">
-        <p id="cotacaoDolar"></p>
-      </marquee>
-    </header>
-    <main>
-      <div class="flex-container">
-        <section id="calculator" class="container">
-          <label for="valorInvestido"
-            >Digite o valor que você vai investir:</label
-          ><br />
-          <input
-            type="number"
-            id="valorInvestido"
-            placeholder="Apenas números"
-          /><br /><br />
 
-          <label for="porcentagemGanho"
-            >Digite a porcentagem desejada para ganho:</label
-          ><br />
-          <input
-            type="number"
-            id="porcentagemGanho"
-            placeholder="Apenas números"
-          /><br /><br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Investimento</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="icon" href="imagens/calc.svg" type="image/x-icon" />
+</head>
 
-          <label for="porcentagemPerda"
-            >Digite a porcentagem que está disposto á perder:</label
-          ><br />
-          <input
-            type="number"
-            id="porcentagemPerda"
-            placeholder="Apenas números"
-          /><br /><br />
-        </section>
+<body>
+  <header>
+    <h1>Calculadora de Investimento</h1>
+    <marquee behavior="scroll" direction="left">
+      <p id="cotacaoDolar"></p>
+    </marquee>
+  </header>
+  <main>
+    <div class="flex-container">
+      <section id="calculator" class="container">
+        <label for="valorInvestido">Digite o valor que você vai investir:</label><br />
+        <input type="number" id="valorInvestido" placeholder="Apenas números" /><br /><br />
 
-        <section id="exp" class="container">
-          <label for="probGanho"
-            >Digite a probabilidade de ganho (por exemplo, 0.7 para 70%): Se
-            você acredita que há uma chance de 70% de ganho no seu investimento,
-            você inseriria 0.7 para uma probabilidade de ganho de 70%. Isso não
-            está necessariamente relacionado ao valor do investimento em dólares
-            ou reais, mas sim à sua avaliação do risco associado ao
-            investimento.</label
-          ><br />
-          <input
-            type="number"
-            id="probGanho"
-            step="0.01"
-            min="0"
-            max="1"
-            placeholder="Apenas números entre 0 e 1"
-          /><br /><br />
+        <label for="porcentagemGanho">Digite a porcentagem desejada para ganho:</label><br />
+        <input type="number" id="porcentagemGanho" placeholder="Apenas números" /><br /><br />
 
-          <label for="valorGanho"
-            >Digite o valor do ganho (por exemplo, 1000 se você espera ganhar
-            R$1000):</label
-          ><br />
-          <input
-            type="number"
-            id="valorGanho"
-            placeholder="Apenas números"
-          /><br /><br />
-
-          <label for="probPerda"
-            >Digite a probabilidade de perda (por exemplo, 0.3 para 30%): Por
-            exemplo, se você acredita que há uma chance de 30% de perder seu
-            investimento, você inseriria 0.3 para uma probabilidade de perda de
-            30%. Isso não está necessariamente relacionado ao valor do
-            investimento em dólares ou reais, mas sim à sua avaliação do risco
-            associado ao investimento.</label
-          ><br />
-          <input
-            type="number"
-            id="probPerda"
-            step="0.01"
-            min="0"
-            max="1"
-            placeholder="Apenas números entre 0 e 1"
-          /><br /><br />
-
-          <label for="valorPerda"
-            >Digite o valor da perda (por exemplo, 500 se você pode perder
-            R$500):</label
-          ><br />
-          <input
-            type="number"
-            id="valorPerda"
-            placeholder="Apenas números"
-          /><br /><br />
-        </section>
-      </div>
-      <button id="btn" class="btn" onclick="calcularInvestimento()">
-        Calcular
-      </button>
-      <i
-        >*Obs: o cálculo é baseado nas porcentagens de ganho e perda
-        inseridas.*</i
-      >
-
-      <section id="results">
-        <p id="resumo">
-          "Gestão de risco é a âncora que protege seu investimento, exigindo uma
-          abordagem proativa, diversificação inteligente e constante vigilância
-          para enfrentar os desafios do mercado com confiança e resiliência."
-        </p>
+        <label for="porcentagemPerda">Digite a porcentagem que está disposto á perder:</label><br />
+        <input type="number" id="porcentagemPerda" placeholder="Apenas números" /><br /><br />
       </section>
 
-      <section id="faq">
-        <h2>Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-item">
-          <h3 onclick="toggleAnswer(1)">O que é Expectativa Matemática?</h3>
-          <p class="answer">
-            A Expectativa Matemática é uma média teórica do retorno esperado de
-            um investimento, considerando as probabilidades de ganho e perda.
-          </p>
-        </div>
-        <div class="faq-item">
-          <h3 onclick="toggleAnswer(2)">
-            Como a Expectativa Matemática é calculada?
-          </h3>
-          <p class="answer">
-            A Expectativa Matemática é calculada multiplicando a probabilidade
-            de ganho pelo valor do ganho, e subtraindo a probabilidade de perda
-            pelo valor da perda.
-          </p>
-        </div>
-        <div class="faq-item">
-          <h3 onclick="toggleAnswer(3)">
-            Os resultados da Expectativa Matemática são garantidos?
-          </h3>
-          <p class="answer">
-            Não, os resultados da Expectativa Matemática são uma média teórica e
-            os resultados reais podem variar. É importante entender que
-            investimentos envolvem riscos e retornos imprevisíveis.
-          </p>
-        </div>
-      </section>
-    </main>
+      <section id="exp" class="container">
+        <label for="probGanho">Digite a probabilidade de ganho (por exemplo, 0.7 para 70%): Se
+          você acredita que há uma chance de 70% de ganho no seu investimento,
+          você inseriria 0.7 para uma probabilidade de ganho de 70%. Isso não
+          está necessariamente relacionado ao valor do investimento em dólares
+          ou reais, mas sim à sua avaliação do risco associado ao
+          investimento.</label><br />
+        <input type="number" id="probGanho" step="0.01" min="0" max="1"
+          placeholder="Apenas números entre 0 e 1" /><br /><br />
 
-    <footer>
-      <p class="copyright">
-        <a
-          href="https://instabio.cc/ciclododinheiro"
-          target="_blank"
-          rel="noopener noreferrer"
-          >analist.com@outlook.com © 2023</a
-        >
+        <label for="valorGanho">Digite o valor do ganho (por exemplo, 1000 se você espera ganhar
+          R$1000):</label><br />
+        <input type="number" id="valorGanho" placeholder="Apenas números" /><br /><br />
+
+        <label for="probPerda">Digite a probabilidade de perda (por exemplo, 0.3 para 30%): Por
+          exemplo, se você acredita que há uma chance de 30% de perder seu
+          investimento, você inseriria 0.3 para uma probabilidade de perda de
+          30%. Isso não está necessariamente relacionado ao valor do
+          investimento em dólares ou reais, mas sim à sua avaliação do risco
+          associado ao investimento.</label><br />
+        <input type="number" id="probPerda" step="0.01" min="0" max="1"
+          placeholder="Apenas números entre 0 e 1" /><br /><br />
+
+        <label for="valorPerda">Digite o valor da perda (por exemplo, 500 se você pode perder
+          R$500):</label><br />
+        <input type="number" id="valorPerda" placeholder="Apenas números" /><br /><br />
+      </section>
+    </div>
+    <button id="btn" class="btn" onclick="calcularInvestimento()">
+      Calcular
+    </button>
+    <i>*Obs: o cálculo é baseado nas porcentagens de ganho e perda
+      inseridas.*</i>
+
+    <section id="results">
+      <p id="resumo">
+        "Gestão de risco é a âncora que protege seu investimento, exigindo uma
+        abordagem proativa, diversificação inteligente e constante vigilância
+        para enfrentar os desafios do mercado com confiança e resiliência."
       </p>
-    </footer>
+    </section>
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    <section id="faq">
+      <h2>Perguntas Frequentes (FAQ)</h2>
+      <div class="faq-item">
+        <h3 onclick="toggleAnswer(1)">O que é Expectativa Matemática?</h3>
+        <p class="answer">
+          A Expectativa Matemática é uma média teórica do retorno esperado de
+          um investimento, considerando as probabilidades de ganho e perda.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 onclick="toggleAnswer(2)">
+          Como a Expectativa Matemática é calculada?
+        </h3>
+        <p class="answer">
+          A Expectativa Matemática é calculada multiplicando a probabilidade
+          de ganho pelo valor do ganho, e subtraindo a probabilidade de perda
+          pelo valor da perda.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 onclick="toggleAnswer(3)">
+          Os resultados da Expectativa Matemática são garantidos?
+        </h3>
+        <p class="answer">
+          Não, os resultados da Expectativa Matemática são uma média teórica e
+          os resultados reais podem variar. É importante entender que
+          investimentos envolvem riscos e retornos imprevisíveis.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="copyright">
+      <a href="https://analisti.github.io/SiteAnalist/" target="_blank" rel="noopener noreferrer">analis.com © 2023</a>
+    </p>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
