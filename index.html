@@ -4,74 +4,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Investimento</title>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Calculadora e Gerenciador Financeiro</title>
+  <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="imagens/calc.svg" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
   <header>
-    <h1>Calculadora de Investimento</h1>
+    <nav>
+      <ul>
+        <li><a href="#calculadora">Calculadora de Investimento</a></li>
+        <li><a href="#gerenciador">Gerenciador de Salário</a></li>
+      </ul>
+    </nav>
+    <h1>Calculadora e Gerenciador Financeiro</h1>
     <marquee behavior="scroll" direction="left">
       <p id="cotacaoDolar"></p>
     </marquee>
   </header>
   <main>
-    <div class="flex-container">
-      <section id="calculator" class="container">
-        <label for="valorInvestido">Digite o valor que você vai investir:</label><br />
-        <input type="number" id="valorInvestido" placeholder="Apenas números" /><br /><br />
-
-        <label for="porcentagemGanho">Digite a porcentagem desejada para ganho:</label><br />
-        <input type="number" id="porcentagemGanho" placeholder="Apenas números" /><br /><br />
-
-        <label for="porcentagemPerda">Digite a porcentagem que está disposto á perder:</label><br />
-        <input type="number" id="porcentagemPerda" placeholder="Apenas números" /><br /><br />
-      </section>
-
-      <section id="exp" class="container">
-        <label for="probGanho">Digite a probabilidade de ganho (por exemplo, 0.7 para 70%): Se
-          você acredita que há uma chance de 70% de ganho no seu investimento,
-          você inseriria 0.7 para uma probabilidade de ganho de 70%. Isso não
-          está necessariamente relacionado ao valor do investimento em dólares
-          ou reais, mas sim à sua avaliação do risco associado ao
-          investimento.</label><br />
-        <input type="number" id="probGanho" step="0.01" min="0" max="1"
-          placeholder="Apenas números entre 0 e 1" /><br /><br />
-
-        <label for="valorGanho">Digite o valor do ganho (por exemplo, 1000 se você espera ganhar
-          R$1000):</label><br />
-        <input type="number" id="valorGanho" placeholder="Apenas números" /><br /><br />
-
-        <label for="probPerda">Digite a probabilidade de perda (por exemplo, 0.3 para 30%): Por
-          exemplo, se você acredita que há uma chance de 30% de perder seu
-          investimento, você inseriria 0.3 para uma probabilidade de perda de
-          30%. Isso não está necessariamente relacionado ao valor do
-          investimento em dólares ou reais, mas sim à sua avaliação do risco
-          associado ao investimento.</label><br />
-        <input type="number" id="probPerda" step="0.01" min="0" max="1"
-          placeholder="Apenas números entre 0 e 1" /><br /><br />
-
-        <label for="valorPerda">Digite o valor da perda (por exemplo, 500 se você pode perder
-          R$500):</label><br />
-        <input type="number" id="valorPerda" placeholder="Apenas números" /><br /><br />
-      </section>
-    </div>
-    <button id="btn" class="btn" onclick="calcularInvestimento()">
-      Calcular
-    </button>
-    <i>*Obs: o cálculo é baseado nas porcentagens de ganho e perda
-      inseridas.*</i>
-
-    <section id="results">
-      <p id="resumo">
+    <section id="calculadora">
+      <h2>Calculadora de Investimento</h2>
+      <div class="flex-container">
+        <div class="container">
+          <label for="valorInvestido">Digite o valor que você vai investir:</label><br />
+          <input type="number" id="valorInvestido" placeholder="Apenas números" /><br /><br />
+          <label for="porcentagemGanho">Digite a porcentagem desejada para ganho:</label><br />
+          <input type="number" id="porcentagemGanho" placeholder="Apenas números" /><br /><br />
+          <label for="porcentagemPerda">Digite a porcentagem que está disposto a perder:</label><br />
+          <input type="number" id="porcentagemPerda" placeholder="Apenas números" /><br /><br />
+        </div>
+        <div class="container">
+          <label for="probGanho">Digite a probabilidade de ganho (por exemplo, 0.7 para
+            70%):</label><br />
+          <input type="number" id="probGanho" step="0.01" min="0" max="1"
+            placeholder="Apenas números entre 0 e 1" /><br /><br />
+          <label for="valorGanho">Digite o valor do ganho (por exemplo, 1000 se você espera ganhar
+            R$1000):</label><br />
+          <input type="number" id="valorGanho" placeholder="Apenas números" /><br /><br />
+          <label for="probPerda">Digite a probabilidade de perda (por exemplo, 0.3 para
+            30%):</label><br />
+          <input type="number" id="probPerda" step="0.01" min="0" max="1"
+            placeholder="Apenas números entre 0 e 1" /><br /><br />
+          <label for="valorPerda">Digite o valor da perda (por exemplo, 500 se você pode perder
+            R$500):</label><br />
+          <input type="number" id="valorPerda" placeholder="Apenas números" /><br /><br />
+        </div>
+      </div>
+      <button id="btnInvestimento" class="btn">Calcular</button>
+      <p id="resumoInvestimento">
         "Gestão de risco é a âncora que protege seu investimento, exigindo uma
         abordagem proativa, diversificação inteligente e constante vigilância
         para enfrentar os desafios do mercado com confiança e resiliência."
       </p>
-    </section>
-
-    <section id="faq">
       <h2>Perguntas Frequentes (FAQ)</h2>
       <div class="faq-item">
         <h3 onclick="toggleAnswer(1)">O que é Expectativa Matemática?</h3>
@@ -101,11 +87,19 @@
         </p>
       </div>
     </section>
+
+    <section id="gerenciador">
+      <h2>Gerenciador de Salário</h2>
+      <div class="container">
+        <input type="number" id="salary" placeholder="Insira seu salário aqui" />
+        <button onclick="calculate()">Calcular</button>
+        <div id="output"></div>
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <img
-      src="http://contador.kinghost.com.br/contador.cgi?ft=1|df=https://analisti.github.io/CalculadoraInvestimento/" />
     <p class="copyright">
       <a href="https://analisti.github.io/SiteAnalist/" target="_blank"
         rel="noopener noreferrer">analist.com@outlook.com © 2023</a>
@@ -113,6 +107,7 @@
   </footer>
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 

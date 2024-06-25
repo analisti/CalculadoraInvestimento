@@ -40,7 +40,6 @@ const highlightEmptyInputs = () => {
 
 // Função para calcular o investimento
 const calcularInvestimento = () => {
-  // Obter os valores dos campos de entrada
   const valorInvestido = parseFloat(
     document.getElementById("valorInvestido").value
   );
@@ -51,35 +50,30 @@ const calcularInvestimento = () => {
     document.getElementById("porcentagemPerda").value
   );
 
-  // Verificar se algum dos valores de entrada está vazio ou não é um número
   if (
     isNaN(valorInvestido) ||
     isNaN(porcentagemGanho) ||
     isNaN(porcentagemPerda)
   ) {
     alert("Por favor, preencha todos os campos de entrada.");
-    highlightEmptyInputs(); // Destacar inputs vazios
+    highlightEmptyInputs();
     return;
   }
 
-  // Calcular a meta diária e a perda máxima diária
   const metaDiaria = Math.round(valorInvestido * (porcentagemGanho / 100));
   const perdaMaximaDiaria = Math.round(
     valorInvestido * (porcentagemPerda / 100)
   );
 
-  // Calcular a expectativa matemática
   const { expectativa, mensagem } = calcularExpectativa();
 
-  // Criar o resumo do investimento
   const resumo = `Valor Investido: R$ ${valorInvestido.toFixed(2)}
-      Meta Diária: R$ ${metaDiaria}
-      Perda Máxima Diária: R$ ${perdaMaximaDiaria}
-      Expectativa Matemática: ${expectativa}
-      ${mensagem}`;
+    Meta Diária: R$ ${metaDiaria}
+    Perda Máxima Diária: R$ ${perdaMaximaDiaria}
+    Expectativa Matemática: ${expectativa}
+    ${mensagem}`;
 
-  // Atualizar o resumo na página
-  document.getElementById("resumo").innerText = resumo;
+  document.getElementById("resumoInvestimento").innerText = resumo;
 };
 
 // Função para lidar com a tecla Enter
@@ -107,26 +101,11 @@ const obterCotacao = async () => {
   }
 };
 
-// Quando o documento estiver carregado, adicionar os ouvintes de eventos
-document.addEventListener("DOMContentLoaded", () => {
-  // Adicionar um ouvinte de eventos ao botão "Calcular"
-  document
-    .getElementById("btn")
-    .addEventListener("click", calcularInvestimento);
-
-  // Adicionar um ouvinte de eventos para lidar com a tecla Enter
-  document.addEventListener("keydown", handleKeyPress);
-});
-
-// Obter a cotação do dólar a cada 5 segundos e imediatamente quando a página é carregada
-setInterval(obterCotacao, 5000);
-obterCotacao();
-
 // Função para alternar a visibilidade da resposta da FAQ
 const toggleAnswer = (index) => {
   const answer = document
     .querySelectorAll(".faq-item")
-    [index - 1].querySelector(".answer");
+  [index - 1].querySelector(".answer");
   const item = document.querySelectorAll(".faq-item")[index - 1];
 
   if (answer.style.maxHeight) {
@@ -137,3 +116,70 @@ const toggleAnswer = (index) => {
     item.classList.add("expanded");
   }
 };
+
+// Funções para Gerenciador de Salário
+const categories = {
+  "Gastos Fixos": 0.55,
+  Lazer: 0.12,
+  Investimento: 0.1,
+  Emergência: 0.1,
+  Educação: 0.1,
+  Torrar: 0.03,
+};
+
+document.getElementById("salary").addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    calculate();
+  }
+});
+
+function calculate() {
+  const salary = document.getElementById("salary").value;
+  let output = "";
+  let chartData = [];
+  for (let category in categories) {
+    const amount = salary * categories[category];
+    output += `<div class="category"><strong>${category}:</strong> R$ ${amount.toFixed(
+      2
+    )}</div>`;
+    chartData.push(amount);
+  }
+  document.getElementById("output").innerHTML = output;
+  drawChart(Object.keys(categories), chartData);
+}
+
+function drawChart(labels, data) {
+  var ctx = document.getElementById("chart").getContext("2d");
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          data: data,
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF",
+            "#FF9F40",
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  });
+}
+
+// Quando o documento estiver carregado
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("btnInvestimento")
+    .addEventListener("click", calcularInvestimento);
+  document.addEventListener("keydown", handleKeyPress);
+  setInterval(obterCotacao, 5000);
+  obterCotacao();
+});

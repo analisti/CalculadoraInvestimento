@@ -1,228 +1,294 @@
-/* Reset some default styles */
+/* Reset CSS */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
+/* Font and Colors */
 body {
   font-family: "Roboto", sans-serif;
-  line-height: 1.8;
+  background: linear-gradient(to right, #f4f4f9, #d4e0e5);
   color: #333;
-  background-color: #f4f4f4;
-  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem 0;
+  background: linear-gradient(90deg, #4caf50, #2e7d32);
+  color: white;
+  padding: 20px 0;
   text-align: center;
-  margin-bottom: 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  animation: fadeIn 0.5s ease-in-out;
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5em;
+  animation: fadeIn 2s ease-in-out;
 }
 
 @keyframes fadeIn {
-  0% {
+  from {
     opacity: 0;
   }
-  100% {
+
+  to {
     opacity: 1;
   }
 }
 
-i {
+nav ul {
+  list-style-type: none;
   display: flex;
   justify-content: center;
-  color: #444;
-  animation: bounce 1s infinite;
+  margin-bottom: 10px;
 }
 
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ddd;
+}
+
+main {
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 
 .container:hover {
-  transform: scale(1.02);
+  transform: translateY(-10px);
 }
 
-.container label {
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.flex-container .container {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
-.container input[type="number"] {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1.5rem;
-  border-radius: 5px;
+input[type="number"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
-  transition: border 0.3s ease;
+  border-radius: 4px;
+  transition: border-color 0.3s;
 }
 
-.container input[type="number"]:focus {
-  border: 1px solid #333;
+input[type="number"]:focus,
+input[type="text"]:focus {
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-.container button {
-  display: block;
-  width: 100%;
-  padding: 0.8rem;
+button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  color: white;
   border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.container button:hover {
-  background-color: #444;
-  transform: scale(1.02);
+button:hover {
+  background: linear-gradient(90deg, #66bb6a, #81c784);
+  transform: translateY(-2px);
 }
 
-#calculator,
-#exp {
-  flex: 1;
+button:active {
+  transform: translateY(0);
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  padding: 0.8rem;
-  margin: 1rem auto;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #444;
-  transform: scale(1.02);
-}
-
-#results {
-  text-align: center;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-#results:hover {
-  transform: scale(1.02);
-}
-
-#faq {
-  margin-top: 2rem;
+#resumoInvestimento,
+.answer {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
 
 .faq-item {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .faq-item h3 {
   cursor: pointer;
-  margin-bottom: 0.5rem;
-  color: #333;
+  color: #4caf50;
+  font-weight: bold;
+  position: relative;
+  padding-right: 20px;
+  margin: 0;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+
+.faq-item h3:hover {
+  color: #388e3c;
 }
 
 .faq-item h3::after {
-  content: "▼";
-  display: inline-block;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
+  content: "\25BC";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s;
 }
 
 .faq-item.expanded h3::after {
-  content: "▲";
-  transform: rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
 }
 
-.faq-item .answer {
+.answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
 
 .faq-item.expanded .answer {
-  max-height: 200px;
-  opacity: 1;
+  max-height: 1000px;
+  /* Arbitrary large value to ensure it expands */
+  padding: 10px 0;
 }
 
 footer {
-  background-color: #333;
-  color: #fff;
+  background: linear-gradient(90deg, #4caf50, #2e7d32);
+  color: white;
   text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 footer a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-footer a:hover {
-  color: #ddd;
+canvas {
+  margin-top: 20px;
+  max-width: 100%;
 }
 
-@media (max-width: 600px) {
-  body {
-    font-size: 20px;
+.input-error {
+  border: 2px solid red;
+}
+
+/* New Styles for Better User Experience */
+
+/* Marquee Style */
+marquee p {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive Navigation Menu */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
   }
 
-  header {
-    padding: 2rem 0;
+  nav ul li {
+    margin: 10px 0;
   }
 
   main {
-    width: 98%;
+    grid-template-columns: 1fr;
   }
+}
 
-  .container {
-    padding: 1rem;
-  }
+/* Smooth Input Focus */
+input[type="number"]:focus,
+input[type="text"]:focus {
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
 
-  footer {
-    padding: 2rem 0;
-  }
+/* FAQ Transition */
+.faq-item h3::after {
+  transition: transform 0.3s;
+}
+
+.faq-item.expanded h3::after {
+  transform: rotate(180deg);
+}
+
+/* Tooltip for Additional Info */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Position above the element */
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Add tooltip example */
+.tooltip-icon {
+  cursor: pointer;
+  margin-left: 5px;
+  font-weight: bold;
+  color: #4caf50;
 }
