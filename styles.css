@@ -93,6 +93,14 @@ main {
   min-width: 300px;
 }
 
+/* Estilo para a imagem */
+.container img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+}
+
 label {
   display: block;
   margin-bottom: 10px;
